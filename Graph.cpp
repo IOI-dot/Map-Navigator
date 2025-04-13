@@ -2,10 +2,9 @@
 #include "Graph.h"
 
 Graph::Graph() {
-    // No dynamic allocation required here, DynamicArray handles this issue
 }
 
-void Graph::addNode(const char* cityName) {
+void Graph::addNode(const char* cityName) {    //Pointer to a character array
     Node newNode;
     int i = 0;
     for (; i < sizeof(newNode.name) - 1 && cityName[i] != '\0'; i++) {
