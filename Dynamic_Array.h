@@ -16,6 +16,7 @@ public:
 
     void push_back(const T& value);
     T& operator[](int index);
+    const T& operator[](int index) const;
     int getSize() const;
     bool isEmpty() const;
 };
@@ -23,7 +24,7 @@ public:
 // Constructor
 template<typename T>
 DynamicArray<T>::DynamicArray() {
-    capacity = 4;
+    capacity = 100;
     size = 0;
     data = new T[capacity];
 }
@@ -60,6 +61,11 @@ T& DynamicArray<T>::operator[](int index) {
     return data[index];
 }
 
+template<typename T>
+const T& DynamicArray<T>::operator[](int index) const {
+    return data[index];
+}
+
 // Get the current size of the array
 template<typename T>
 int DynamicArray<T>::getSize() const {
@@ -73,3 +79,4 @@ bool DynamicArray<T>::isEmpty() const {
 }
 
 #endif
+
