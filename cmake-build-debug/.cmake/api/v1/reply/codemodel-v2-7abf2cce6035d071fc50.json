@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "MapNavigator::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-MapNavigator-Debug-4dbcc608977d379143c4.json",
+					"jsonFile" : "target-MapNavigator-Debug-caad44e75a577d759415.json",
 					"name" : "MapNavigator",
 					"projectIndex" : 0
 				}
@@ -55,6 +55,6 @@
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 8
+		"minor" : 7
 	}
 }

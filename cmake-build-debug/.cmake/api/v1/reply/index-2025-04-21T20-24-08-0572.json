@@ -8,34 +8,34 @@
 		},
 		"paths" : 
 		{
-			"cmake" : "D:/AUC-CPP/bin/cmake.exe",
-			"cpack" : "D:/AUC-CPP/bin/cpack.exe",
-			"ctest" : "D:/AUC-CPP/bin/ctest.exe",
-			"root" : "D:/AUC-CPP/share/cmake-4.0"
+			"cmake" : "C:/Users/Razma/AppData/Local/Programs/CLion/bin/cmake/win/x64/bin/cmake.exe",
+			"cpack" : "C:/Users/Razma/AppData/Local/Programs/CLion/bin/cmake/win/x64/bin/cpack.exe",
+			"ctest" : "C:/Users/Razma/AppData/Local/Programs/CLion/bin/cmake/win/x64/bin/ctest.exe",
+			"root" : "C:/Users/Razma/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.31"
 		},
 		"version" : 
 		{
 			"isDirty" : false,
-			"major" : 4,
-			"minor" : 0,
-			"patch" : 1,
-			"string" : "4.0.1",
+			"major" : 3,
+			"minor" : 31,
+			"patch" : 6,
+			"string" : "3.31.6",
 			"suffix" : ""
 		}
 	},
 	"objects" : 
 	[
 		{
-			"jsonFile" : "codemodel-v2-6376efb292d007dd6b19.json",
+			"jsonFile" : "codemodel-v2-7abf2cce6035d071fc50.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
 				"major" : 2,
-				"minor" : 8
+				"minor" : 7
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-8197625608dac92d8d17.json",
+			"jsonFile" : "cache-v2-7bfb4aa49bcf3c651502.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -44,7 +44,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-a7686ed27de2a001dbee.json",
+			"jsonFile" : "cmakeFiles-v1-6c13632bc4f6cd83db3c.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -66,7 +66,7 @@
 	{
 		"cache-v2" : 
 		{
-			"jsonFile" : "cache-v2-8197625608dac92d8d17.json",
+			"jsonFile" : "cache-v2-7bfb4aa49bcf3c651502.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -76,7 +76,7 @@
 		},
 		"cmakeFiles-v1" : 
 		{
-			"jsonFile" : "cmakeFiles-v1-a7686ed27de2a001dbee.json",
+			"jsonFile" : "cmakeFiles-v1-6c13632bc4f6cd83db3c.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -86,12 +86,12 @@
 		},
 		"codemodel-v2" : 
 		{
-			"jsonFile" : "codemodel-v2-6376efb292d007dd6b19.json",
+			"jsonFile" : "codemodel-v2-7abf2cce6035d071fc50.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
 				"major" : 2,
-				"minor" : 8
+				"minor" : 7
 			}
 		},
 		"toolchains-v1" : 
