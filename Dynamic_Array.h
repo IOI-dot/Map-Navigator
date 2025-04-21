@@ -38,7 +38,7 @@ DynamicArray<T>::~DynamicArray() {
 // Resize function to double the capacity when full
 template<typename T>
 void DynamicArray<T>::resize() {
-    capacity *= 2;
+    capacity *= 1.2;
     T* newData = new T[capacity];
     for (int i = 0; i < size; i++) {
         newData[i] = data[i];
