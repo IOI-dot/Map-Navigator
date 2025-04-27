@@ -4,7 +4,6 @@ project(MapNavigator)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(MapNavigator
-        Dynamic_Array.cpp
         Graph.cpp
         main.cpp
 )
