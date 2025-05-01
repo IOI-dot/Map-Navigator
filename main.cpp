@@ -16,37 +16,45 @@ FileReader x;
         std::cout << "5. Exit\n";
         std::cout << "Enter choice: ";
         std::cin >> choice;
+        std::cin.ignore();
 
         if (choice == 1) {
             char city[30];
             std::cout << "Enter city name: ";
-            std::cin >> city;
+            std::cin.getline(city, 30);
             g.addNode(city);
+
         } else if (choice == 2) {
             char city1[30], city2[30];
             double dist;
             std::cout << "Enter first city: ";
-            std::cin >> city1;
+            std::cin.getline(city1, 30);
             std::cout << "Enter second city: ";
-            std::cin >> city2;
+            std::cin.getline(city2, 30);
             std::cout << "Enter distance (km): ";
             std::cin >> dist;
+            std::cin.ignore(); //clear newline before next loop
             g.addEdge(city1, city2, dist);
+
         } else if (choice == 3) {
             g.display();
+
         } else if (choice == 4) {
             char start[30], end[30];
             std::cout << "Enter start city: ";
-            std::cin >> start;
+            std::cin.getline(start, 30);
             std::cout << "Enter destination city: ";
-            std::cin >> end;
+            std::cin.getline(end, 30);
             Dijkstra::shortestPath(g, start, end);
+
         } else if (choice == 5) {
             break;
+
         } else {
             std::cout << "Invalid choice\n";
         }
     }
+
 
     return 0;
 }
