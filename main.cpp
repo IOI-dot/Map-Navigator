@@ -44,7 +44,7 @@ FileReader x;
         } else if (choice == 5) {
             break;
         } else {
-            std::cout << "Invalid choice!\n";
+            std::cout << "Invalid choice\n";
         }
     }
 

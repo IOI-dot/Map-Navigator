@@ -1,6 +1,6 @@
 #include "Dijkstra.h"
 #include <iostream>
-#include <limits>
+#include <limits> //Needed for trangulation
 #include <vector>
 
 void Dijkstra::shortestPath(const Graph& g, const char* startCity, const char* endCity) {

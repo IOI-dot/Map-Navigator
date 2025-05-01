@@ -83,20 +83,15 @@ private:
 };
 
 int main() {
-    // Example usage
     Graph graph;
 
-    // Adding nodes (cities)
     graph.addNode("CityA");
     graph.addNode("CityB");
     graph.addNode("CityC");
 
-    // Adding edges (roads between cities)
     graph.addEdge("CityA", "CityB", 5);
     graph.addEdge("CityB", "CityC", 3);
     graph.addEdge("CityA", "CityC", 10);
-
-    // Running the GUI
     GraphVisualizer visualizer(graph);
     visualizer.run();
 
