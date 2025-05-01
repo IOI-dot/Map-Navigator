@@ -5,7 +5,7 @@
 
 class Dijkstra {
 public:
-    static void shortestPath(const Graph& g, const char* startCity, const char* endCity);
+    static void shortestPath(const Graph& g, std::string startCity, std::string endCity);
 };
 
 #endif

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>  // For formatting if needed
+
 // Helper function to trim whitespace (both leading and trailing)
 std::string FileReader::trim(const std::string &str) {
     size_t start = str.find_first_not_of(" \t\n\r");
@@ -45,9 +46,9 @@ void FileReader::loadFromFile(const std::string& filePath, Graph& graph) {
                     graph.addNode(city2.c_str());
                     graph.addEdge(city1.c_str(), city2.c_str(), distance);
 
-                    std::cout << "Read: [" << city1 << "] [" << city2 << "] [" << distance << "]\n";
-                } else {
-                    std::cerr << "Error: Distance not found for cities [" << city1 << "], [" << city2 << "]\n";
+                    // std::cout << "Read: [" << city1 << "] [" << city2 << "] [" << distance << "]\n";
+                // } else {
+                //     std::cerr << "Error: Distance not found for cities [" << city1 << "], [" << city2 << "]\n";
                 }
             }
         }

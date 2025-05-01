@@ -2,27 +2,27 @@
 #include <cstring>
 #include <iostream>
 
-void Graph::addNode(const char* cityName) {
+void Graph::addNode(std::string cityName) {
     // Check if the node already exists
     if (getIndexByName(cityName) != -1) return;
 
     Node newNode;
-    // Ensure the name is correctly copied into the array with a null-terminator
-    strncpy(newNode.name, cityName, sizeof(newNode.name) - 1);
-    newNode.name[sizeof(newNode.name) - 1] = '\0';
+    newNode.name = cityName;
     nodes.push_back(newNode);  // Use DynamicArray's push_back
 }
 
-int Graph::getIndexByName(const char* cityName) const {
+
+int Graph::getIndexByName(std::string cityName) const {
     for (int i = 0; i < nodes.get_size(); ++i) {
-        if (strcmp(nodes[i].name, cityName) == 0) {
+        if (nodes[i].name == cityName) {
             return i;
         }
     }
     return -1;
 }
 
-void Graph::addEdge(const char* fromCity, const char* toCity, double weight) {
+
+void Graph::addEdge(std::string fromCity, std::string toCity, double weight) {
     int from = getIndexByName(fromCity);
     int to = getIndexByName(toCity);
 
@@ -50,31 +50,38 @@ void Graph::addEdge(const char* fromCity, const char* toCity, double weight) {
 
     nodes[from].edges.push_back(e1);  // Add edge to the source city
     nodes[to].edges.push_back(e2);    // Add edge to the destination city
+    std:: cout << "Direct path of " << weight << " kilometers between " << fromCity << " and " << toCity << " added successfully!" << std::endl << std::endl;
 }
+
 
 void Graph::display() const {
     for (int i = 0; i < nodes.get_size(); i++) {
-        std::cout << nodes[i].name << " -> ";
+        std::cout << std::endl << nodes[i].name << std::endl;
         for (int j = 0; j < nodes[i].edges.get_size(); j++) {
             int to = nodes[i].edges[j].to;
-            std::cout << "(" << nodes[to].name << ", " << nodes[i].edges[j].weight << " km) ";
+            std::cout << "  -> " << nodes[to].name << " (distance: " << nodes[i].edges[j].weight << " km)" << std::endl;
         }
-        std::cout << "\n";
     }
+
+    std::cout << std::endl;
 }
+
 
 int Graph::getSize() const {
     return nodes.get_size();  // Use DynamicArray's getSize
 }
 
-const char* Graph::getCityName(int index) const {
+
+std::string Graph::getCityName(int index) const {
     return nodes[index].name;
 }
+
 
 const DynamicArray<Graph::Edge>& Graph::getEdges(int index) const {
     return nodes[index].edges;
 }
 
-int Graph::getCityIndex(const char* name) const {
+
+int Graph::getCityIndex(std::string name) const {
     return getIndexByName(name);
 }

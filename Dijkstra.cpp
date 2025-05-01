@@ -3,7 +3,7 @@
 #include <limits> //Needed for trangulation
 #include <vector>
 
-void Dijkstra::shortestPath(const Graph& g, const char* startCity, const char* endCity) {
+void Dijkstra::shortestPath(const Graph& g, std::string startCity, std::string endCity) {
     int n = g.getSize();
     int start = g.getCityIndex(startCity);
     int end = g.getCityIndex(endCity);
@@ -45,9 +45,10 @@ void Dijkstra::shortestPath(const Graph& g, const char* startCity, const char* e
     }
 
     if (dist[end] == std::numeric_limits<double>::infinity()) {
-        std::cout << "No path exists.\n";
-    } else {
-        std::cout << "Shortest path distance: " << dist[end] << " km\n";
+        std::cout << "No path exists between " << startCity << " and " << endCity << std::endl;
+    }
+    else {
+        std::cout << "The shortest distance between " << startCity << " and " << endCity << " is: " << dist[end] << " km\n";
 
         // Retrieve the path
         std::vector<int> path;
@@ -55,7 +56,7 @@ void Dijkstra::shortestPath(const Graph& g, const char* startCity, const char* e
             path.push_back(at);
         }
 
-        std::cout << "Path: ";
+        std::cout << "Below is the path you need to take:" << std::endl;
         for (int i = path.size() - 1; i >= 0; --i) {
             std::cout << g.getCityName(path[i]) << (i ? " -> " : "\n");
         }

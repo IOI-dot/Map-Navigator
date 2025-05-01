@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include "Dynamic_Array.h"
+#include <string>
 
 class Graph {
 private:
@@ -11,23 +12,23 @@ private:
     };
 
     struct Node {
-        char name[30];
+        std::string name;
         DynamicArray<Edge> edges;  // Store edges using DynamicArray
     };
 
     DynamicArray<Node> nodes;  // Store nodes using DynamicArray
 
-    int getIndexByName(const char* cityName) const;
+    int getIndexByName(std::string cityName) const;
 
 public:
-    void addNode(const char* cityName);
-    void addEdge(const char* fromCity, const char* toCity, double weight);
+    void addNode(std::string cityName);
+    void addEdge(std::string fromCity, std::string toCity, double weight);
     void display() const;
 
     int getSize() const;
-    const char* getCityName(int index) const;
+    std::string getCityName(int index) const;
     const DynamicArray<Edge>& getEdges(int index) const;
-    int getCityIndex(const char* name) const;
+    int getCityIndex(std::string name) const;
 };
 
 #endif
