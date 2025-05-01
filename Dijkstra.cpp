@@ -1,10 +1,10 @@
 #include "Dijkstra.h"
 #include <iostream>
-#include <limits> //Needed for trangulation
+#include <limits>
 #include <vector>
 
 void Dijkstra::shortestPath(const Graph& g, std::string startCity, std::string endCity) {
-    int n = g.getSize();
+    int n = g.getSize(); // number of cities (nodes)
     int start = g.getCityIndex(startCity);
     int end = g.getCityIndex(endCity);
 
@@ -12,13 +12,13 @@ void Dijkstra::shortestPath(const Graph& g, std::string startCity, std::string e
         std::cout << "Invalid city name.\n";
         return;
     }
-
+    //INITIALIZE DIJKSTRA VARIABLES
     std::vector<double> dist(n, std::numeric_limits<double>::infinity());
     std::vector<int> prev(n, -1);
     std::vector<bool> visited(n, false);
 
     dist[start] = 0;
-
+    //The Algrothim
     for (int i = 0; i < n; ++i) {
         int u = -1;
         for (int j = 0; j < n; ++j) {
@@ -28,11 +28,11 @@ void Dijkstra::shortestPath(const Graph& g, std::string startCity, std::string e
         }
 
         if (dist[u] == std::numeric_limits<double>::infinity()) {
-            break;
+            break;// No more reachable nodes
         }
 
         visited[u] = true;
-
+        //Finding the shortest path
         const auto& edges = g.getEdges(u);
         for (int j = 0; j < edges.get_size(); j++) {
             int v = edges[j].to;
