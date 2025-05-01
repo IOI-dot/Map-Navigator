@@ -1,82 +1,136 @@
-#ifndef DYNAMIC_ARRAY_H
-#define DYNAMIC_ARRAY_H
+#include <iostream>
+#include <stdexcept>
 
-template<typename T>
+template <typename T>
 class DynamicArray {
 private:
-    T* data;
-    int size;
-    int capacity;
+    T* arr;
+    size_t size;
+    size_t capacity;
 
-    void resize();
+    void resize(size_t new_capacity) {
+        T* new_arr = new T[new_capacity];
+        for (size_t i = 0; i < size; ++i) {
+            new_arr[i] = arr[i];
+        }
+        delete[] arr;
+        arr = new_arr;
+        capacity = new_capacity;
+    }
 
 public:
-    DynamicArray();
-    ~DynamicArray();
-
-    void push_back(const T& value);
-    T& operator[](int index);
-    const T& operator[](int index) const;
-    int getSize() const;
-    bool isEmpty() const;
-};
-
-// Constructor
-template<typename T>
-DynamicArray<T>::DynamicArray() {
-    capacity = 100;
-    size = 0;
-    data = new T[capacity];
-}
-
-// Destructor
-template<typename T>
-DynamicArray<T>::~DynamicArray() {
-    delete[] data;
-}
-
-// Resize function to double the capacity when full
-template<typename T>
-void DynamicArray<T>::resize() {
-    capacity *= 1.2;
-    T* newData = new T[capacity];
-    for (int i = 0; i < size; i++) {
-        newData[i] = data[i];
+    // Constructor
+    DynamicArray() : size(0), capacity(2) {
+        arr = new T[capacity];
     }
-    delete[] data;
-    data = newData;
-}
 
-// Adds a value at the end of the array
-template<typename T>
-void DynamicArray<T>::push_back(const T& value) {
-    if (size == capacity)
-        resize();
-    data[size++] = value;
-}
+    // Destructor
+    ~DynamicArray() {
+        delete[] arr;
+    }
 
-// Accessor for array elements
-template<typename T>
-T& DynamicArray<T>::operator[](int index) {
-    return data[index];
-}
+    // Copy constructor
+    DynamicArray(const DynamicArray& other) : size(other.size), capacity(other.capacity) {
+        arr = new T[capacity];
+        for (size_t i = 0; i < size; ++i) {
+            arr[i] = other.arr[i];
+        }
+    }
 
-template<typename T>
-const T& DynamicArray<T>::operator[](int index) const {
-    return data[index];
-}
+    // Assignment operator
+    DynamicArray& operator=(const DynamicArray& other) {
+        if (this != &other) {
+            delete[] arr;
 
-// Get the current size of the array
-template<typename T>
-int DynamicArray<T>::getSize() const {
-    return size;
-}
+            size = other.size;
+            capacity = other.capacity;
+            arr = new T[capacity];
 
-// Check if the array is empty
-template<typename T>
-bool DynamicArray<T>::isEmpty() const {
-    return size == 0;
-}
+            for (size_t i = 0; i < size; ++i) {
+                arr[i] = other.arr[i];
+            }
+        }
+        return *this;
+    }
 
-#endif
+    // Get the size of the array
+    size_t get_size() const {
+        return size;
+    }
+
+    // Get the capacity of the array
+    size_t get_capacity() const {
+        return capacity;
+    }
+
+    // Access elements by index
+    T& operator[](size_t index) {
+        if (index >= size) {
+            throw std::out_of_range("Index out of range");
+        }
+        return arr[index];
+    }
+
+    const T& operator[](size_t index) const {
+        if (index >= size) {
+            throw std::out_of_range("Index out of range");
+        }
+        return arr[index];
+    }
+
+    // Add an element to the array
+    void push_back(const T& value) {
+        if (size == capacity) {
+            resize(capacity * 2);
+        }
+        arr[size++] = value;
+    }
+
+    // Remove the last element from the array
+    void pop_back() {
+        if (size == 0) {
+            throw std::underflow_error("Cannot pop from an empty array");
+        }
+        --size;
+    }
+
+    // Insert an element at a given index
+    void insert(size_t index, const T& value) {
+        if (index > size) {
+            throw std::out_of_range("Index out of range");
+        }
+        if (size == capacity) {
+            resize(capacity * 2);
+        }
+        for (size_t i = size; i > index; --i) {
+            arr[i] = arr[i - 1];
+        }
+        arr[index] = value;
+        ++size;
+    }
+
+    // Remove an element at a given index
+    void erase(size_t index) {
+        if (index >= size) {
+            throw std::out_of_range("Index out of range");
+        }
+        for (size_t i = index; i < size - 1; ++i) {
+            arr[i] = arr[i + 1];
+        }
+        --size;
+    }
+
+    // Clear the array
+    void clear() {
+        size = 0;
+    }
+
+    // Print the array elements (for debugging purposes)
+    void print() const {
+        for (size_t i = 0; i < size; ++i) {
+            std::cout << arr[i] << " ";
+        }
+        std::cout << std::endl;
+    }
+};
 
