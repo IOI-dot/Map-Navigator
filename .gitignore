@@ -1,3 +1,4 @@
 .idea/
-/cmake-build-*/
-/build-MapNavigator-*/
+**/cmake-build-*/
+**/build-*/
+GUI/build-MapNavigator-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/
