@@ -13,12 +13,14 @@ void Dijkstra::shortestPath(const Graph& g, std::string startCity, std::string e
         return;
     }
     //INITIALIZE DIJKSTRA VARIABLES
+
     std::vector<double> dist(n, std::numeric_limits<double>::infinity());
     std::vector<int> prev(n, -1);
     std::vector<bool> visited(n, false);
 
     dist[start] = 0;
     //The Algrothim
+
     for (int i = 0; i < n; ++i) {
         int u = -1;
         for (int j = 0; j < n; ++j) {
@@ -33,6 +35,7 @@ void Dijkstra::shortestPath(const Graph& g, std::string startCity, std::string e
 
         visited[u] = true;
         //Finding the shortest path
+
         const auto& edges = g.getEdges(u);
         for (int j = 0; j < edges.get_size(); j++) {
             int v = edges[j].to;
@@ -48,6 +51,7 @@ void Dijkstra::shortestPath(const Graph& g, std::string startCity, std::string e
         std::cout << "No path exists between " << startCity << " and " << endCity << std::endl;
     }
     else {
+
         std::cout << "The shortest distance between " << startCity << " and " << endCity << " is: " << dist[end] << " km\n";
 
         // Retrieve the path
