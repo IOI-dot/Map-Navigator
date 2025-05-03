@@ -1,0 +1,3 @@
+D:/Auc/ADS/Map-Navigator/cmake-build-debug-visual-studio/CMakeFiles/MapNavigator.dir
+D:/Auc/ADS/Map-Navigator/cmake-build-debug-visual-studio/CMakeFiles/edit_cache.dir
+D:/Auc/ADS/Map-Navigator/cmake-build-debug-visual-studio/CMakeFiles/rebuild_cache.dir

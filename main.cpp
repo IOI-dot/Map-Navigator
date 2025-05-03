@@ -13,7 +13,6 @@ int main() {
 
     int choice;
     std::string city1, city2;
-    double dist;
 
     while (true) {
         std::cout << "\n--------------MAP NAVIGATOR--------------\n";
@@ -21,12 +20,14 @@ int main() {
         std::cout << "2. Add a direct path between two cities\n";
         std::cout << "3. Display available cities\n";
         std::cout << "4. Navigate between two cities\n";
-        std::cout << "5. Exit Program\n\n";
+		std::cout << "5. Delete a city\n";
+		std::cout << "6. Delete a direct path between two cities\n";
+        std::cout << "7. Exit Program\n\n";
         std::cout << "Please select an operation:  ";
 
         std::cin >> choice;
 
-        while (std::cin.fail() || choice < 1 || choice > 5 ) { //to make sure user enters a number from 1 to 5. std::cin.fail() is in case input is not a number
+        while (std::cin.fail() || choice < 1 || choice > 7 ) { //to make sure user enters a number from 1 to 5. std::cin.fail() is in case input is not a number
             std::cin.clear();
             std::cin.ignore(INT_MAX, '\n');
             std::cout << "Invalid input. Please enter a number from 1 to 5" << std::endl;
@@ -49,38 +50,49 @@ int main() {
         }
 
         // Add a direct path between two cities
-        else if (choice == 2) {
-            if (g.getSize() == 0)
-                std::cout << "Graph is empty. Cannot add edge. Please add at least two cities before using this feature" << std::endl << std::endl;
+		else if (choice == 2) {
+			if (g.getSize() < 2) {
+				std::cout << "Graph is empty or has only one city. Cannot add edge.\n";
+			}
+			else {
+				std::cout << "Enter first city: ";
+				std::cin.ignore();
+				getline(std::cin, city1);
+				std::cout << "Enter second city: ";
+				//std::cin.ignore(); updated
+				getline(std::cin, city2);
 
-            else if (g.getSize() == 1)
-                std::cout << "There is only one city. Cannot add edge. Please add another city before using this feature" << std::endl << std::endl;
+				double dist = 0.0;
+				bool validDistance = false;
 
-            else {
-                std::cout << "Enter first city: " << std::endl;
-                std::cin.ignore();
-                getline(std::cin, city1);
+				std::cout << "Please enter the distance in kilometers between " << city1 << " and " << city2 << std::endl;
 
-                std::cout << "Enter second city: ";
-                std::cin.ignore();
-                getline(std::cin, city2);
+				while (!validDistance) {
+					std::cin >> dist;
+					if (std::cin.fail()) {
+						std::cin.clear();
+						std::cin.ignore(10000, '\n');
+						std::cout << "Invalid input! Please enter a numeric distance greater than zero: ";
+					}
+					else if (dist <= 0) {
+						std::cout << "Distance must be greater than zero. Please try again: ";
+					}
+					else {
+						validDistance = true;
+					}
+				}
 
-                std::cout << "Please enter the distance in kilometers between " << city1 << " and " << city2 << std::endl;
-                while (std::cin.fail() || dist <= 0) {//to make sure distance is not zero or negative, nor non-numeric
-                    if (std::cin.fail()) {
-                        std::cout << "Invalid input! Please try again" << std::endl;
-                        std::cin.clear(); //if input is not a number
-                        std::cin.ignore(INT_MAX, '\n');
-                    }
-                    else
-                        std::cout << "Distance cannot be 0 or less! Please try again" << std::endl;
+				int fromIndex = g.getIndexByNameIgnoreCase(city1);
+				int toIndex = g.getIndexByNameIgnoreCase(city2);
 
-                    std::cin >> dist;
-                }
-
-                g.addEdge(city1, city2, dist);
-            }
-        }
+				if (fromIndex == -1 || toIndex == -1) {
+					std::cout << "One or both cities not found. Please check spelling.\n";
+				}
+				else {
+					g.addEdge(city1, city2, dist);
+				}
+			}
+		}
 
         // Display available cities
         else if (choice == 3) {
@@ -93,24 +105,61 @@ int main() {
 
         }
 
-        // Navigate between two cities (find shortest path)
-        else if (choice == 4) {
-            if (g.getSize() < 2)
-                std::cout << "There aren't enough cities to perform this action." << std::endl;
-            else {
-                std::cout << "Enter the starting city: " << std::endl;
-                std::cin.ignore();
-                getline(std::cin, city1);
+        // Navigate between two cities (find shortest path) updated
+		else if (choice == 4) {
+			std::cout << "Enter the starting city: ";
+			std::cin.ignore();
+			getline(std::cin, city1);
+			std::cout << "Enter the destination city: ";
+			getline(std::cin, city2);
 
-                std::cout << "Enter the destination city: ";
-                std::cin.ignore();
-                getline(std::cin, city2);
+			int start = g.getIndexByNameIgnoreCase(city1);
+			int end = g.getIndexByNameIgnoreCase(city2);
+			if (start == -1 || end == -1) {
+				std::cout << "One or both cities do not exist.\n";
+			}
+			else if (start == end) {
+				std::cout << "Start and destination city are the same.\n";
+			}
+			else {
+				Dijkstra::shortestPath(g, city1, city2);
+			}
+		}
+		else if (choice == 5) {
+			std::cout << "Enter city name to delete: ";
+			std::cin.ignore();
+			getline(std::cin, city1);
+			int cityIndex = g.getIndexByNameIgnoreCase(city1);
+			if (cityIndex == -1) {
+				std::cout << "City does not exist\n";
+			}
+			else
+				g.deleteCity(city1);
+		}
+		else if (choice == 6) {
+			if (g.getSize() < 2)
+				std::cout << "There aren't enough cities to perform this action." << std::endl;
+			else {
+				std::cout << "Enter first city: ";
+				std::cin.ignore();
+				getline(std::cin, city1);
+				std::cout << "Enter second city: ";
+				getline(std::cin, city2);
+				int start = g.getIndexByNameIgnoreCase(city1);
+				int end = g.getIndexByNameIgnoreCase(city2);
+				if (start == -1 || end == -1) {
+					std::cout << "One or both cities do not exist.\n";
+				}
+				else if (start == end) {
+					std::cout << "Start and destination city are the same.\n";
+				}
+				else {
+					g.deleteEdge(city1, city2);
+				}
 
-                Dijkstra::shortestPath(g, city1, city2);
-            }
-        }
-        // Exit Program
-        else if (choice == 5)
+			}
+		}
+        else if (choice == 7)
             break;
 
     }
