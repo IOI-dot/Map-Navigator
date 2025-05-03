@@ -13,5 +13,7 @@ This application provides the user with the ability of navigating from one city 
 Currently supported features:
 * Add a city
 * Add a direct path between two cities
+* Delete a city
+* Delete a direct path between two cities
 * Display all available cities and their direct paths
 * Navigate between two cities and find the shortest path
