@@ -1,4 +1,4 @@
-#include "File_Reader.h"
+#include "File_Handler.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -36,14 +36,17 @@ void FileReader::loadFromFile(const std::string& filePath, Graph& graph) {
         if (std::getline(iss, city1, '\t') || std::getline(iss, city1, ' ')) {
             // Remove leading/trailing spaces around city1
             city1 = a.trim(city1);
+            graph.addNode(city1.c_str());
+
             // Try reading city2 (for case with space/tab separation)
             if (std::getline(iss, city2, '\t') || std::getline(iss, city2, ' ')) {
                 city2 = a.trim(city2);
+
+                if (!city2.empty())
+                    graph.addNode(city2.c_str());
+
                 // Attempt to read the distance
                 if (iss >> distance) {
-                    // Add cities and the edge (distance between them)
-                    graph.addNode(city1.c_str());
-                    graph.addNode(city2.c_str());
                     graph.addEdge(city1.c_str(), city2.c_str(), distance);
 
                     // std::cout << "Read: [" << city1 << "] [" << city2 << "] [" << distance << "]\n";
@@ -55,6 +58,28 @@ void FileReader::loadFromFile(const std::string& filePath, Graph& graph) {
     }
 
     std::cout << "Graph loaded from file: " << filePath << "\n";
+}
+
+void FileReader::saveToFile(const std::string& filePath, Graph graph) {
+    std::ofstream file(filePath);
+
+    for (int i = 0; i < graph.getSize(); i++) {
+        std::string fromCity = graph.getCityName(i);
+        DynamicArray<Edge> edges = graph.getEdges(i);
+
+        if (edges.get_size() > 0) {
+            for (int i = 0; i < edges.get_size(); i++) {
+                std::string tocity = graph.getCityName(edges[i].to);
+                double weight = edges[i].weight;
+                file << fromCity << "\t" << tocity << "\t" << weight << "\n";
+            }
+        }
+        else
+            file << fromCity << "\n";
+    }
+
+    file.close();
+
 }
 
 

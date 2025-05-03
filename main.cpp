@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Graph.h"
 #include "Dijkstra.h"
-#include "File_Reader.h"
+#include "File_Handler.h"
 
 bool stringTest(std::string cityName); //Forward declaration for function that validates city name
 
@@ -159,8 +159,11 @@ int main() {
 
 			}
 		}
-        else if (choice == 7)
-            break;
+        else if (choice == 7) {
+	        std::cout << "Exiting Program...";
+        	x.saveToFile("../city_connections_dataset.txt",g);
+        	break;
+        }
 
     }
 

@@ -4,18 +4,21 @@
 #include "Dynamic_Array.h"
 #include <string>
 
+class Edge {
+public:
+    int to;
+    double weight;
+};
+
+class Node {
+public:
+    std::string name;
+    DynamicArray<Edge> edges;  // Store edges using DynamicArray
+};
+
+
 class Graph {
 private:
-    struct Edge {
-        int to;
-        double weight;
-    };
-
-    struct Node {
-        std::string name;
-        DynamicArray<Edge> edges;  // Store edges using DynamicArray
-    };
-
     DynamicArray<Node> nodes;  // Store nodes using DynamicArray
 
     int getIndexByName(std::string cityName) const;

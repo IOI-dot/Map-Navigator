@@ -6,8 +6,7 @@ void Graph::addNode(std::string cityName) {
     // Check if the node already exists
     if (getIndexByName(cityName) != -1) return;
 
-    Node newNode;
-    newNode.name = cityName;
+    Node newNode(cityName);
     nodes.push_back(newNode);  // Use DynamicArray's push_back
 }
 
@@ -80,7 +79,7 @@ std::string Graph::getCityName(int index) const {
 
 
 
-const DynamicArray<Graph::Edge>& Graph::getEdges(int index) const {
+const DynamicArray<Edge>& Graph::getEdges(int index) const {
     return nodes[index].edges;
 }
 

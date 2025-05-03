@@ -1,4 +1,3 @@
-City1	City2	Distance (km)
 New York	Chicago	663
 New York	Houston	385
 New York	San Diego	964
@@ -7,95 +6,33 @@ New York	San Jose	1134
 New York	Indianapolis	1880
 New York	Seattle	1750
 New York	Denver	965
-Los Angeles	Chicago	1663
-Los Angeles	Phoenix	298
-Los Angeles	San Diego	188
-Los Angeles	Denver	566
-Chicago	San Jose	827
-Chicago	Austin	646
-Chicago	Columbus	1400
-Chicago	Charlotte	1593
-Chicago	San Francisco	1046
-Houston	San Diego	165
-Houston	Austin	1970
-Houston	Denver	605
-Phoenix	Jacksonville	1110
-Phoenix	Fort Worth	196
-Phoenix	Charlotte	427
-Phoenix	Seattle	881
-Philadelphia	San Antonio	1233
-Philadelphia	Dallas	1576
-Philadelphia	San Jose	1912
-Philadelphia	Jacksonville	1412
-Philadelphia	Columbus	423
-Philadelphia	Seattle	1125
-San Antonio	San Diego	1380
-San Antonio	Dallas	1408
-San Antonio	Austin	865
-San Antonio	San Francisco	763
-San Antonio	Seattle	843
-San Diego	San Jose	1898
-San Diego	Jacksonville	1598
-San Diego	Columbus	1657
-San Diego	San Francisco	1451
-San Diego	Denver	1886
-Dallas	Washington	231
-San Jose	Fort Worth	551
-San Jose	Columbus	1549
-San Jose	San Francisco	1954
-San Jose	Indianapolis	776
-San Jose	Seattle	587
-San Jose	Denver	1094
-San Jose	Washington	370
-Austin	Charlotte	1068
-Austin	Indianapolis	298
-Jacksonville	Columbus	1438
-Jacksonville	San Francisco	924
-Jacksonville	Denver	492
-Jacksonville	Washington	1018
-Fort Worth	Columbus	475
-Fort Worth	Charlotte	611
-Fort Worth	Indianapolis	1754
-Fort Worth	Washington	1207
-Columbus	Denver	1094
-Charlotte	Seattle	104
-Charlotte	Washington	1705
-San Francisco	Seattle	1526
-Indianapolis	Washington	707
-Seattle	Denver	219
-New York	Chicago	1296
-New York	Houston	1982
 New York	Philadelphia	1140
 New York	San Antonio	480
-New York	San Diego	239
-New York	San Jose	345
 New York	Jacksonville	1285
 New York	Fort Worth	1368
 New York	Columbus	1446
 New York	Charlotte	1170
 New York	San Francisco	634
-New York	Indianapolis	1566
-New York	Seattle	643
-New York	Denver	1475
-Los Angeles	Chicago	1639
-Los Angeles	Phoenix	1372
-Los Angeles	San Diego	536
-Los Angeles	Dallas	371
-Los Angeles	Fort Worth	423
-Los Angeles	Columbus	1212
-Los Angeles	Denver	1773
-Los Angeles	Washington	1458
+Chicago	New York	663
+Chicago	Los Angeles	1663
+Chicago	San Jose	827
+Chicago	Austin	646
+Chicago	Columbus	1400
+Chicago	Charlotte	1593
+Chicago	San Francisco	1046
 Chicago	Houston	1898
 Chicago	Phoenix	336
 Chicago	San Diego	677
-Chicago	Austin	1398
 Chicago	Fort Worth	614
-Chicago	San Francisco	967
 Chicago	Seattle	783
+Houston	New York	385
+Houston	Chicago	1898
+Houston	San Diego	165
+Houston	Austin	1970
+Houston	Denver	605
 Houston	Phoenix	1618
 Houston	Philadelphia	1545
 Houston	San Antonio	119
-Houston	San Diego	1908
 Houston	San Jose	173
 Houston	Jacksonville	403
 Houston	Fort Worth	185
@@ -103,68 +40,232 @@ Houston	Columbus	1941
 Houston	Indianapolis	832
 Houston	Seattle	611
 Houston	Washington	1246
-Phoenix	San Antonio	1371
-Phoenix	San Jose	432
-Phoenix	Columbus	1608
-Phoenix	Indianapolis	1471
-Phoenix	Washington	1712
-Philadelphia	San Diego	179
-Philadelphia	San Jose	1772
-Philadelphia	Jacksonville	1780
-Philadelphia	Columbus	148
-Philadelphia	San Francisco	670
-Philadelphia	Denver	1413
-Philadelphia	Washington	1491
-San Antonio	Dallas	156
-San Antonio	San Jose	634
-San Antonio	Austin	643
-San Antonio	Jacksonville	1321
-San Antonio	Fort Worth	1592
-San Antonio	Charlotte	1147
-San Antonio	San Francisco	1942
-San Antonio	Indianapolis	621
-San Antonio	Seattle	993
-San Antonio	Denver	1995
-San Diego	Jacksonville	983
+San Diego	New York	964
+San Diego	Chicago	677
+San Diego	Houston	165
+San Diego	Los Angeles	188
+San Diego	San Antonio	1380
+San Diego	San Jose	1898
+San Diego	Jacksonville	1598
+San Diego	Columbus	1657
+San Diego	San Francisco	1451
+San Diego	Denver	1886
+San Diego	Philadelphia	179
 San Diego	Fort Worth	1460
 San Diego	Indianapolis	1943
 San Diego	Seattle	733
 San Diego	Washington	1527
+Dallas	New York	291
+Dallas	Philadelphia	1576
+Dallas	San Antonio	1408
+Dallas	Washington	231
+Dallas	Los Angeles	371
 Dallas	San Jose	360
 Dallas	Austin	1461
 Dallas	San Francisco	1222
 Dallas	Seattle	530
 Dallas	Denver	1287
+San Jose	New York	1134
+San Jose	Chicago	827
+San Jose	Houston	173
+San Jose	San Diego	1898
+San Jose	Dallas	360
+San Jose	Philadelphia	1912
+San Jose	Fort Worth	551
+San Jose	Columbus	1549
+San Jose	San Francisco	1954
+San Jose	Indianapolis	776
+San Jose	Seattle	587
+San Jose	Denver	1094
+San Jose	Washington	370
+San Jose	Phoenix	432
+San Jose	San Antonio	634
 San Jose	Austin	1004
 San Jose	Jacksonville	537
-San Jose	Fort Worth	1725
-San Jose	San Francisco	273
-San Jose	Indianapolis	1459
-San Jose	Denver	1776
+Indianapolis	New York	1880
+Indianapolis	Houston	832
+Indianapolis	San Diego	1943
+Indianapolis	San Jose	776
+Indianapolis	Austin	298
+Indianapolis	Fort Worth	1754
+Indianapolis	Washington	707
+Indianapolis	Phoenix	1471
+Indianapolis	San Antonio	621
+Indianapolis	San Francisco	1692
+Indianapolis	Seattle	787
+Indianapolis	Denver	1206
+Seattle	New York	1750
+Seattle	Chicago	783
+Seattle	Houston	611
+Seattle	San Diego	733
+Seattle	Dallas	530
+Seattle	San Jose	587
+Seattle	Indianapolis	787
+Seattle	Phoenix	881
+Seattle	Philadelphia	1125
+Seattle	San Antonio	843
+Seattle	Charlotte	104
+Seattle	San Francisco	1526
+Seattle	Denver	219
+Seattle	Austin	1914
+Seattle	Fort Worth	1741
+Seattle	Washington	538
+Denver	New York	965
+Denver	Houston	605
+Denver	San Diego	1886
+Denver	Dallas	1287
+Denver	San Jose	1094
+Denver	Indianapolis	1206
+Denver	Seattle	219
+Denver	Los Angeles	566
+Denver	Jacksonville	492
+Denver	Columbus	1094
+Denver	Philadelphia	1413
+Denver	San Antonio	1995
+Denver	Fort Worth	1187
+Denver	San Francisco	1000
+Denver	Washington	934
+Philadelphia	New York	1140
+Philadelphia	Houston	1545
+Philadelphia	San Diego	179
+Philadelphia	Dallas	1576
+Philadelphia	San Jose	1912
+Philadelphia	Seattle	1125
+Philadelphia	Denver	1413
+Philadelphia	Columbus	423
+Philadelphia	San Francisco	670
+Philadelphia	Jacksonville	1412
+Philadelphia	San Antonio	1233
+Philadelphia	Washington	1491
+San Antonio	New York	480
+San Antonio	Houston	119
+San Antonio	San Diego	1380
+San Antonio	Dallas	1408
+San Antonio	San Jose	634
+San Antonio	Indianapolis	621
+San Antonio	Seattle	843
+San Antonio	Denver	1995
+San Antonio	Philadelphia	1233
+San Antonio	Phoenix	1371
+San Antonio	Austin	865
+San Antonio	Charlotte	1147
+San Antonio	San Francisco	763
+San Antonio	Jacksonville	1321
+San Antonio	Fort Worth	1592
+Jacksonville	New York	1285
+Jacksonville	Houston	403
+Jacksonville	San Diego	1598
+Jacksonville	San Jose	537
+Jacksonville	Denver	492
+Jacksonville	Philadelphia	1412
+Jacksonville	San Antonio	1321
+Jacksonville	Phoenix	1110
+Jacksonville	Austin	735
+Jacksonville	Columbus	1438
+Jacksonville	San Francisco	924
+Jacksonville	Washington	1018
+Jacksonville	Fort Worth	918
+Fort Worth	New York	1368
+Fort Worth	Chicago	614
+Fort Worth	Houston	185
+Fort Worth	San Diego	1460
+Fort Worth	San Jose	551
+Fort Worth	Indianapolis	1754
+Fort Worth	Seattle	1741
+Fort Worth	Denver	1187
+Fort Worth	San Antonio	1592
+Fort Worth	Jacksonville	918
+Fort Worth	Los Angeles	423
+Fort Worth	Phoenix	196
+Fort Worth	Austin	507
+Fort Worth	Columbus	475
+Fort Worth	Charlotte	611
+Fort Worth	San Francisco	1978
+Fort Worth	Washington	1207
+Columbus	New York	1446
+Columbus	Chicago	1400
+Columbus	Houston	1941
+Columbus	San Diego	1657
+Columbus	San Jose	1549
+Columbus	Denver	1094
+Columbus	Philadelphia	423
+Columbus	Jacksonville	1438
+Columbus	Fort Worth	475
+Columbus	Los Angeles	1212
+Columbus	Phoenix	1608
+Columbus	Austin	194
+Columbus	Charlotte	1646
+Charlotte	New York	1170
+Charlotte	Chicago	1593
+Charlotte	Seattle	104
+Charlotte	San Antonio	1147
+Charlotte	Fort Worth	611
+Charlotte	Columbus	1646
+Charlotte	Phoenix	427
+Charlotte	Austin	1068
+Charlotte	Washington	1705
+Charlotte	San Francisco	425
+San Francisco	New York	634
+San Francisco	Chicago	1046
+San Francisco	San Diego	1451
+San Francisco	Dallas	1222
+San Francisco	San Jose	1954
+San Francisco	Indianapolis	1692
+San Francisco	Seattle	1526
+San Francisco	Denver	1000
+San Francisco	Philadelphia	670
+San Francisco	San Antonio	763
+San Francisco	Jacksonville	924
+San Francisco	Fort Worth	1978
+San Francisco	Charlotte	425
+San Francisco	Washington	685
+Los Angeles	Chicago	1663
+Los Angeles	San Diego	188
+Los Angeles	Dallas	371
+Los Angeles	Denver	566
+Los Angeles	Fort Worth	423
+Los Angeles	Columbus	1212
+Los Angeles	Phoenix	298
+Los Angeles	Washington	1458
+Austin	Chicago	646
+Austin	Houston	1970
+Austin	Dallas	1461
+Austin	San Jose	1004
+Austin	Indianapolis	298
+Austin	Seattle	1914
+Austin	San Antonio	865
 Austin	Jacksonville	735
 Austin	Fort Worth	507
 Austin	Columbus	194
-Austin	Charlotte	1073
-Austin	Seattle	1914
+Austin	Charlotte	1068
 Austin	Washington	1526
-Jacksonville	Fort Worth	918
-Jacksonville	Columbus	1443
-Jacksonville	Washington	1746
-Fort Worth	Charlotte	202
-Fort Worth	San Francisco	1978
-Fort Worth	Seattle	1741
-Fort Worth	Denver	1187
-Columbus	Charlotte	1646
-Columbus	Denver	1801
-Charlotte	San Francisco	425
-Charlotte	Seattle	630
-San Francisco	Indianapolis	1692
-San Francisco	Seattle	1383
-San Francisco	Denver	1000
-San Francisco	Washington	685
-Indianapolis	Seattle	787
-Indianapolis	Denver	1206
-Indianapolis	Washington	408
-Seattle	Denver	1521
-Seattle	Washington	538
-Denver	Washington	934
+Phoenix	Chicago	336
+Phoenix	Houston	1618
+Phoenix	San Jose	432
+Phoenix	Indianapolis	1471
+Phoenix	Seattle	881
+Phoenix	San Antonio	1371
+Phoenix	Jacksonville	1110
+Phoenix	Fort Worth	196
+Phoenix	Columbus	1608
+Phoenix	Charlotte	427
+Phoenix	Los Angeles	298
+Phoenix	Washington	1712
+Washington	Houston	1246
+Washington	San Diego	1527
+Washington	Dallas	231
+Washington	San Jose	370
+Washington	Indianapolis	707
+Washington	Seattle	538
+Washington	Denver	934
+Washington	Philadelphia	1491
+Washington	Jacksonville	1018
+Washington	Fort Worth	1207
+Washington	Charlotte	1705
+Washington	San Francisco	685
+Washington	Los Angeles	1458
+Washington	Austin	1526
+Washington	Phoenix	1712
+Paris	London	461
+London	Paris	461
+Berlin

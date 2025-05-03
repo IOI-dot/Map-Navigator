@@ -6,6 +6,6 @@ add_executable(MapNavigator
         Graph.cpp
         main.cpp
         Dijkstra.cpp
-        File_Reader.cpp
+        File_Handler.cpp
 )
 
