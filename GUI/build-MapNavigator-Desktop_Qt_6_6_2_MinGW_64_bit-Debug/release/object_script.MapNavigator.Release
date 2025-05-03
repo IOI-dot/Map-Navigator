@@ -1,0 +1,16 @@
+release/cities.o
+release/dijkstra.o
+release/file_reader.o
+release/graph.o
+release/graphitem.o
+release/instructions.o
+release/main.o
+release/navigate.o
+release/paths.o
+release/welcomepage.o
+release/qrc_resources.o
+release/moc_cities.o
+release/moc_instructions.o
+release/moc_navigate.o
+release/moc_paths.o
+release/moc_welcomepage.o

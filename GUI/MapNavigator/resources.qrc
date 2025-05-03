@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/data">
+        <file>city_connections_dataset.txt</file>
+    </qresource>
+</RCC>

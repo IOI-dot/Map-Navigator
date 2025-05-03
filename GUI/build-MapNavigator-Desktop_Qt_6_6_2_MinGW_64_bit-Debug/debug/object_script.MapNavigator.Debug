@@ -1,0 +1,16 @@
+debug/cities.o
+debug/dijkstra.o
+debug/file_reader.o
+debug/graph.o
+debug/graphitem.o
+debug/instructions.o
+debug/main.o
+debug/navigate.o
+debug/paths.o
+debug/welcomepage.o
+debug/qrc_resources.o
+debug/moc_cities.o
+debug/moc_instructions.o
+debug/moc_navigate.o
+debug/moc_paths.o
+debug/moc_welcomepage.o
