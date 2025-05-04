@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     cities.cpp \
     dijkstra.cpp \
+    display.cpp \
     file_reader.cpp \
     graph.cpp \
     graphitem.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     Dynamic_Array.h \
     cities.h \
     dijkstra.h \
+    display.h \
     file_reader.h \
     graph.h \
     graphitem.h \
@@ -34,6 +36,7 @@ HEADERS += \
 
 FORMS += \
     cities.ui \
+    display.ui \
     instructions.ui \
     navigate.ui \
     paths.ui \
@@ -44,5 +47,4 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
-    resources.qrc
+RESOURCES +=

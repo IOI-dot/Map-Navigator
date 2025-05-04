@@ -4,17 +4,21 @@
 #include "Dynamic_Array.h"
 #include <QString>
 
+class Edge {
+public:
+    int to;
+    double weight;
+};
+
+class Node {
+public:
+    QString name;
+    DynamicArray<Edge> edges;  // Store edges using DynamicArray
+};
+
 class Graph {
 private:
-    struct Edge {
-        int to;
-        double weight;
-    };
 
-    struct Node {
-        QString name;
-        DynamicArray<Edge> edges;  // Store edges using DynamicArray
-    };
 
     DynamicArray<Node> nodes;  // Store nodes using DynamicArray
 

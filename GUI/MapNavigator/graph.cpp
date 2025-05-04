@@ -77,7 +77,7 @@ QString Graph::getCityName(int index) const {
 }
 
 
-const DynamicArray<Graph::Edge>& Graph::getEdges(int index) const {
+const DynamicArray<Edge>& Graph::getEdges(int index) const {
     return nodes[index].edges;
 }
 
@@ -153,7 +153,6 @@ void Graph::deleteCity(QString cityName) {
 
     // std::cout << "City '" << cityName << "' and all related edges have been deleted." << std::endl;
 }
-
 bool Graph::edgeExists(QString city1, QString city2) const {
     int cityIndex = getIndexByName(city1);
     DynamicArray<Edge> edges = getEdges(cityIndex);

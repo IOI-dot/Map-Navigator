@@ -1,4 +1,7 @@
 #include "file_reader.h"
+#include "graph.h"
+#include "Dynamic_Array.h"
+#include "graphitem.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -52,6 +55,37 @@ void FileReader::loadFromFile(const QString& filePath, Graph& graph) {
 
     file.close();
     // std::cout << "Graph loaded from file: " << filePath << "\n";
+}
+
+void FileReader::saveToFile(const QString &filePath) {
+    QFile file(filePath);
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
+        qDebug() << "Failed to open file for writing: " << file.errorString();
+        return;
     }
+
+    QTextStream out(&file);
+
+    for (int i = 0; i < graph.getSize(); i++) {
+        QString fromCity = graph.getCityName(i);
+        DynamicArray<Edge> edges = graph.getEdges(i);
+        // qDebug() << "HELLOOOOOOOOO";
+
+        if (edges.get_size() > 0) {
+            for (int i = 0; i < edges.get_size(); i++) {
+                // qDebug() << "ITSMEEEE";
+                QString tocity = graph.getCityName(edges[i].to);
+                // qDebug() << "HIII";
+                double weight = edges[i].weight;
+                out << fromCity << "\t" << tocity << "\t" << weight << "\n";
+            }
+        }
+        else
+            out << fromCity << "\n";
+    }
+
+    file.close();
+}
 
 

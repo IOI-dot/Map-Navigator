@@ -286,9 +286,9 @@ background-color: rgb(128, 162, 146);</string>
    <widget class="QLabel" name="status">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>70</x>
       <y>140</y>
-      <width>181</width>
+      <width>291</width>
       <height>16</height>
      </rect>
     </property>

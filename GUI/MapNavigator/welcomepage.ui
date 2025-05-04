@@ -16,75 +16,6 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(48, 50, 52);</string>
   </property>
-  <widget class="QPushButton" name="cities">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>230</y>
-     <width>191</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Georgia</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(128, 162, 146);</string>
-   </property>
-   <property name="text">
-    <string>Manage Cities</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="paths">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>340</y>
-     <width>191</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Georgia</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(128, 162, 146);</string>
-   </property>
-   <property name="text">
-    <string>Manage Paths</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="navigate">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>450</y>
-     <width>191</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Georgia</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(128, 162, 146);</string>
-   </property>
-   <property name="text">
-    <string>Navigate</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="quit">
    <property name="geometry">
     <rect>
@@ -178,9 +109,9 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>199</y>
+     <y>129</y>
      <width>231</width>
-     <height>351</height>
+     <height>451</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -192,6 +123,98 @@ color: rgb(255, 255, 255);</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
+   <widget class="QPushButton" name="navigate">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>260</y>
+      <width>191</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(128, 162, 146);</string>
+    </property>
+    <property name="text">
+     <string>Navigate</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="paths">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>150</y>
+      <width>191</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(128, 162, 146);</string>
+    </property>
+    <property name="text">
+     <string>Manage Paths</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cities">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>191</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(128, 162, 146);</string>
+    </property>
+    <property name="text">
+     <string>Manage Cities</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="display">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>360</y>
+      <width>191</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(128, 162, 146);</string>
+    </property>
+    <property name="text">
+     <string>View Map</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QFrame" name="frame_2">
    <property name="geometry">
@@ -214,9 +237,6 @@ color: rgb(255, 255, 255);</string>
   </widget>
   <zorder>frame_2</zorder>
   <zorder>frame</zorder>
-  <zorder>cities</zorder>
-  <zorder>paths</zorder>
-  <zorder>navigate</zorder>
   <zorder>quit</zorder>
   <zorder>pushButton_5</zorder>
   <zorder>label_2</zorder>
