@@ -1,13 +1,15 @@
 #include <iostream>
 #include <stdexcept>
 
+// Custom class for a dynamic array à la std::vector
 template <typename T>
 class DynamicArray {
 private:
-    T* arr;
-    size_t size;
-    size_t capacity;
+    T* arr; // Initial pointer to first element
+    size_t size; // The number of elements currently stored in the array
+    size_t capacity; // The maximum number of elements that could be stored in the array (i.e., the number of elements for which memory has been allocated)
 
+    // Changes the capacity of the array; deletes superfluous elements in case of capacity reduction.
     void resize(size_t new_capacity) {
         T* new_arr = new T[new_capacity];
         for (size_t i = 0; i < size; ++i) {

@@ -10,7 +10,7 @@ void Graph::addNode(std::string cityName) {
     nodes.push_back(newNode);  // Use DynamicArray's push_back
 }
 
-
+// Returns the index of the given city.
 int Graph::getIndexByName(std::string cityName) const {
     for (int i = 0; i < nodes.get_size(); ++i) {
         if (nodes[i].name == cityName) {
@@ -19,9 +19,6 @@ int Graph::getIndexByName(std::string cityName) const {
     }
     return -1;
 }
-
-
-
 
 void Graph::addEdge(std::string fromCity, std::string toCity, double weight) {
     int from = getIndexByNameIgnoreCase(fromCity);
@@ -54,7 +51,7 @@ void Graph::addEdge(std::string fromCity, std::string toCity, double weight) {
     std:: cout << "Direct path of " << weight << " kilometers between " << fromCity << " and " << toCity << " added successfully!" << std::endl << std::endl;
 }
 
-
+// Prints out all the edges and their weights.
 void Graph::display() const {
     for (int i = 0; i < nodes.get_size(); i++) {
         std::cout << std::endl << nodes[i].name << std::endl;
@@ -72,17 +69,13 @@ int Graph::getSize() const {
     return nodes.get_size();  // Use DynamicArray's getSize
 }
 
-
 std::string Graph::getCityName(int index) const {
     return nodes[index].name;
 }
 
-
-
 const DynamicArray<Edge>& Graph::getEdges(int index) const {
     return nodes[index].edges;
 }
-
 
 int Graph::getCityIndex(std::string name) const {
     return getIndexByName(name);

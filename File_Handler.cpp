@@ -7,11 +7,13 @@
 
 // Helper function to trim whitespace (both leading and trailing)
 std::string FileReader::trim(const std::string &str) {
-    size_t start = str.find_first_not_of(" \t\n\r");
-    size_t end = str.find_last_not_of(" \t\n\r");
+    size_t start = str.find_first_not_of(" \t\n\r"); // Locates first non-whitespace character
+    size_t end = str.find_last_not_of(" \t\n\r"); // Locates last non-whitespace character
 
-    return (start == std::string::npos || end == std::string::npos) ? "" : str.substr(start, end - start + 1);
+    return (start == std::string::npos || end == std::string::npos) ? "" : str.substr(start, end - start + 1); // Returns substring starting with "start"-index and ending with "end"-index, inclusive.
 }
+
+// Loads the data for the graph from a text file
 void FileReader::loadFromFile(const std::string& filePath, Graph& graph) {
     std::ifstream file(filePath);
     if (!file.is_open()) {
@@ -60,6 +62,7 @@ void FileReader::loadFromFile(const std::string& filePath, Graph& graph) {
     std::cout << "Graph loaded from file: " << filePath << "\n";
 }
 
+// Outputs graph to a text file.
 void FileReader::saveToFile(const std::string& filePath, Graph graph) {
     std::ofstream file(filePath);
 
