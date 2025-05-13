@@ -17,6 +17,7 @@ SOURCES += \
     graphitem.cpp \
     instructions.cpp \
     main.cpp \
+    mainwindow.cpp \
     navigate.cpp \
     paths.cpp \
     welcomepage.cpp
@@ -30,6 +31,7 @@ HEADERS += \
     graph.h \
     graphitem.h \
     instructions.h \
+    mainwindow.h \
     navigate.h \
     paths.h \
     welcomepage.h
@@ -38,6 +40,7 @@ FORMS += \
     cities.ui \
     display.ui \
     instructions.ui \
+    mainwindow.ui \
     navigate.ui \
     paths.ui \
     welcomepage.ui

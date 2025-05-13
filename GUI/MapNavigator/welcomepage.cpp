@@ -48,7 +48,7 @@ void welcomePage::on_navigate_clicked()
 
 void welcomePage::on_quit_clicked()
 {
-    FileReader::saveToFile("../MapNavigator/city_connections_dataset.txt");
+    // FileReader::saveToFile("../MapNavigator/city_connections_dataset.txt");
     QApplication::quit();
 }
 
