@@ -7,5 +7,6 @@ add_executable(MapNavigator
         main.cpp
         Dijkstra.cpp
         File_Handler.cpp
+        Spell_Checker.cpp
 )
 

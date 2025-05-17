@@ -2,7 +2,7 @@
 #include <iostream>
 #include <limits>
 #include <vector>
-//TIME COMPELXITY (O(N^2+E)) (No min-heaps or fibonacci heaps but could be used for better preformance)
+//TIME COMPELXITY (O(N^2+E))
 //Finds the shortest path between the starting city and the ending city using Dijkstra's algorithm
 void Dijkstra::shortestPath(const Graph& g, std::string startCity, std::string endCity) {
     int n = g.getSize(); // number of cities (nodes)
