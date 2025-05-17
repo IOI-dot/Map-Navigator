@@ -17,13 +17,34 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_go_clicked();
+
+    // void on_sourcebox_2_currentIndexChanged(int index);
+
+    void on_sourcebox_currentIndexChanged(int index);
+
+    void on_quit_clicked();
+
+    void on_sourcebox2_currentIndexChanged(int index);
+
+    // void on_destinationbox_currentIndexChanged(int index);
+
+    void on_reset_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene* scene;
-    int radius;
+
+    int radiusX, radiusY;
     int nodeSize;
     int graphSize;
     DynamicArray<QPointF> cityPositions;
+    QString location, destination;
+    QList<QGraphicsLineItem*> edgeLines;
+    QList<QGraphicsEllipseItem*> cities;
+
+    int source1, source2;
     void showGraph();
 };
 

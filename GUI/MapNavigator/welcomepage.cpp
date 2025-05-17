@@ -68,3 +68,5 @@ void welcomePage::on_display_clicked()
     Display->show();
 }
 
+
+
