@@ -266,6 +266,3 @@ Washington	San Francisco	685
 Washington	Los Angeles	1458
 Washington	Austin	1526
 Washington	Phoenix	1712
-Paris	London	461
-London	Paris	461
-Berlin

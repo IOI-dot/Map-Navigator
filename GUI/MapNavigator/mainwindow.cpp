@@ -171,6 +171,17 @@ void MainWindow::on_go_clicked() {
 
     edgeLines.clear();
 
+    if (distance == -1 || path.empty()) {
+        // No path found
+        QMessageBox::warning(this, "No Path Found",
+                             "No path exists between \"" + location + "\" and \"" + destination + "\".");
+
+        ui->distance->setText("Total Distance:\nN/A");
+        ui->pathLabel->setText("Path Taken:\nNo available path.");
+        ui->pathLabel->setVisible(true);
+        showGraph();
+        return; //no path to draw
+    }
     for (int i = 0; i < path.size() - 1; i++) {
         int from = graph.getCityIndex(path[i]);
         int to = graph.getCityIndex(path[i + 1]);
@@ -200,7 +211,15 @@ void MainWindow::on_go_clicked() {
             pathStr += " → ";
     }
 
+    // Set the text
     ui->pathLabel->setText("Path Taken:\n" + pathStr);
+
+    // Make font bold and bigger
+    QFont font = ui->pathLabel->font();
+    font.setBold(true);
+    font.setPointSize(font.pointSize() + 2);
+    ui->pathLabel->setFont(font);
+    ui->pathLabel->setStyleSheet("QLabel { color : darkblue; }");
     ui->pathLabel->setVisible(true);
 }
 
