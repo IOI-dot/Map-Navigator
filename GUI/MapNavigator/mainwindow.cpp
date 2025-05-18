@@ -5,6 +5,7 @@
 #include <QtMath>
 #include <QGraphicsEllipseItem>
 #include <QMessageBox>
+#include <QKeyEvent>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -41,7 +42,8 @@ MainWindow::MainWindow(QWidget *parent)
         citySet.insert(graph.getCityName(i));
     }
     spellChecker = new SpellChecker(citySet);
-
+    ui->sourcebox->installEventFilter(this);
+    ui->sourcebox2->installEventFilter(this);
 }
 
 MainWindow::~MainWindow()
@@ -235,4 +237,20 @@ void MainWindow::on_reset_clicked()
 {
     showGraph();
 }
-
+bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
+    if (event->type() == QEvent::KeyPress) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) {
+            if (obj == ui->sourcebox) {
+                // Move focus to sourcebox2 when Enter pressed in sourcebox
+                ui->sourcebox2->setFocus();
+                return true; // Event handled
+            } else if (obj == ui->sourcebox2) {
+                // Move focus to go button when Enter pressed in sourcebox2
+                ui->go->setFocus();
+                return true; // Event handled
+            }
+        }
+    }
+    return QMainWindow::eventFilter(obj, event);
+}
