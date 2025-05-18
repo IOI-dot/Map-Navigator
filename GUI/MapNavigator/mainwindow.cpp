@@ -4,7 +4,7 @@
 #include "dijkstra.h"
 #include <QtMath>
 #include <QGraphicsEllipseItem>
-
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -34,6 +34,13 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     ui->go->setEnabled(false);
+    ui->sourcebox->setEditable(true);
+    ui->sourcebox2->setEditable(true);
+    QSet<QString> citySet;
+    for (int i = 0; i < graph.getSize(); ++i) {
+        citySet.insert(graph.getCityName(i));
+    }
+    spellChecker = new SpellChecker(citySet);
 
 }
 
@@ -100,17 +107,52 @@ void MainWindow::showGraph() {
 
 }
 
-
-
-
 void MainWindow::on_go_clicked() {
-
     for (auto city : cities) {
         city->setBrush(QColor(128, 162, 146));
     }
 
-    QString source = ui->sourcebox->currentText();
-    QString dest = ui->sourcebox2->currentText();
+    QString source = ui->sourcebox->currentText().trimmed();
+    QString dest = ui->sourcebox2->currentText().trimmed();
+
+    // Validate source
+    if (graph.getCityIndex(source) == -1) {
+        QString suggestion = spellChecker->findClosestMatch(source);
+        if (suggestion != source) {
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::question(this, "Did you mean...",
+                                          "City \"" + source + "\" not found.\nDid you mean \"" + suggestion + "\"?",
+                                          QMessageBox::Yes | QMessageBox::No);
+
+            if (reply == QMessageBox::Yes) {
+                source = suggestion;
+                int suggestionIndex = ui->sourcebox->findText(suggestion);
+                if (suggestionIndex != -1) {
+                    ui->sourcebox->setCurrentIndex(suggestionIndex); // Select valid one already in list
+                }
+            } else {
+                return; // Stop if user rejects suggestion
+            }
+        }
+    }
+
+    // Validate destination
+    if (graph.getCityIndex(dest) == -1) {
+        QString suggestion = spellChecker->findClosestMatch(dest);
+        if (suggestion != dest) {
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::question(this, "Did you mean...",
+                                          "City \"" + dest + "\" not found.\nDid you mean \"" + suggestion + "\"?",
+                                          QMessageBox::Yes | QMessageBox::No);
+
+            if (reply == QMessageBox::Yes) {
+                dest = suggestion;
+                ui->sourcebox2->setCurrentText(suggestion);
+            } else {
+                return;
+            }
+        }
+    }
 
     location = source;
     destination = dest;
@@ -120,7 +162,6 @@ void MainWindow::on_go_clicked() {
     auto path = result.first;
     double distance = result.second;
 
-
     for (auto line : edgeLines) {
         scene->removeItem(line);
         delete line;
@@ -128,22 +169,13 @@ void MainWindow::on_go_clicked() {
 
     edgeLines.clear();
 
-    // QString pathStr;
-    // for (int i = 0; i < result.first.size(); ++i) {
-    //     pathStr += result.first[i];
-    //     if (i != result.first.size() - 1) {
-    //         pathStr += " → ";
-    //     }
-    // }
-
     for (int i = 0; i < path.size() - 1; i++) {
         int from = graph.getCityIndex(path[i]);
-        int to = graph.getCityIndex(path[i+1]);
+        int to = graph.getCityIndex(path[i + 1]);
 
         if (from != -1 && to != -1) {
             QGraphicsLineItem* line = scene->addLine(QLineF(cityPositions[from], cityPositions[to]), QPen(Qt::green));
-            edgeLines.append(line);;
-
+            edgeLines.append(line);
         }
     }
 
@@ -154,11 +186,21 @@ void MainWindow::on_go_clicked() {
         }
     }
 
-    ui->distance->setText("Total Distance: \n " + QString::number(distance) +  " km.");
+    // Show distance
+    ui->distance->setText("Total Distance:\n" + QString::number(distance) + " km.");
     ui->distance->show();
 
-}
+    // Show path
+    QString pathStr;
+    for (int i = 0; i < path.size(); ++i) {
+        pathStr += path[i];
+        if (i != path.size() - 1)
+            pathStr += " → ";
+    }
 
+    ui->pathLabel->setText("Path Taken:\n" + pathStr);
+    ui->pathLabel->setVisible(true);
+}
 
 void MainWindow::on_sourcebox2_currentIndexChanged(int index) {
     source2 = index;
@@ -183,7 +225,7 @@ void MainWindow::on_sourcebox_currentIndexChanged(int index) {
 void MainWindow::on_quit_clicked()
 {
 
-    // FileReader::saveToFile("../MapNavigator/city_connections_dataset.txt");
+    // FileReader::saveToFile("C:/Users/Omar/CLionProjects/Map-Navigator/city_connections_dataset.txt");
     QApplication::quit();
 
 }

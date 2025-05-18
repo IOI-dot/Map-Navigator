@@ -20,6 +20,7 @@ SOURCES += \
     mainwindow.cpp \
     navigate.cpp \
     paths.cpp \
+    spellchecker.cpp \
     welcomepage.cpp
 
 HEADERS += \
@@ -34,6 +35,7 @@ HEADERS += \
     mainwindow.h \
     navigate.h \
     paths.h \
+    spellchecker.h \
     welcomepage.h
 
 FORMS += \

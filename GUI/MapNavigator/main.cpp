@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     FileReader x;
-    x.loadFromFile("../MapNavigator/city_connections_dataset.txt", graph);
+    x.loadFromFile("C:/Users/Omar/CLionProjects/Map-Navigator/city_connections_dataset.txt", graph);
     // welcomePage w;
     MainWindow w;
     w.show();

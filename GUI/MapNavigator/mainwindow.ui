@@ -61,16 +61,16 @@
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Box</enum>
+     <enum>QFrame::Shape::Box</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
+     <enum>QFrame::Shadow::Sunken</enum>
     </property>
     <property name="text">
      <string>Map Navigator </string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
    <widget class="QComboBox" name="sourcebox">
@@ -124,7 +124,7 @@ background-color: rgb(128, 162, 146);</string>
      <string>Select destination</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -150,7 +150,7 @@ background-color: rgb(128, 162, 146);</string>
      <string>Select starting city</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="go">
@@ -179,7 +179,7 @@ background-color: rgb(128, 162, 146);</string>
    <widget class="QPushButton" name="reset">
     <property name="geometry">
      <rect>
-      <x>790</x>
+      <x>800</x>
       <y>560</y>
       <width>71</width>
       <height>41</height>
@@ -226,9 +226,9 @@ background-color: rgb(68, 71, 71);</string>
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>510</y>
+      <y>500</y>
       <width>151</width>
-      <height>61</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -236,6 +236,16 @@ background-color: rgb(68, 71, 71);</string>
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;Total Distance&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="pathLabel">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>530</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
     </property>
    </widget>
    <zorder>label_2</zorder>
@@ -248,6 +258,7 @@ background-color: rgb(68, 71, 71);</string>
    <zorder>reset</zorder>
    <zorder>quit</zorder>
    <zorder>distance</zorder>
+   <zorder>pathLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -255,7 +266,7 @@ background-color: rgb(68, 71, 71);</string>
      <x>0</x>
      <y>0</y>
      <width>877</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

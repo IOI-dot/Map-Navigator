@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include "Dynamic_Array.h"
-
+#include "spellchecker.h"
 namespace Ui {
 class MainWindow;
 }
@@ -35,7 +35,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene* scene;
-
+    SpellChecker* spellChecker;
     int radiusX, radiusY;
     int nodeSize;
     int graphSize;
