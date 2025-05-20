@@ -217,7 +217,7 @@ void MainWindow::on_go_clicked() {
     // Make font bold and bigger
     QFont font = ui->pathLabel->font();
     font.setBold(true);
-    font.setPointSize(font.pointSize() + 2);
+    font.setPointSize(12);
     ui->pathLabel->setFont(font);
     ui->pathLabel->setStyleSheet("QLabel { color : darkblue; }");
     ui->pathLabel->setVisible(true);
