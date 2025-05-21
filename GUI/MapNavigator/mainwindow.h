@@ -3,8 +3,16 @@
 
 #include <QMainWindow>
 #include <QGraphicsScene>
+#include <QGraphicsItem>
 #include "Dynamic_Array.h"
 #include "spellchecker.h"
+#include "graphitem.h"
+#include "dijkstra.h"
+#include <QtMath>
+#include <QGraphicsEllipseItem>
+#include <QMessageBox>
+#include <QKeyEvent>
+
 namespace Ui {
 class MainWindow;
 }
@@ -41,7 +49,9 @@ private:
     DynamicArray<QPointF> cityPositions;
     QString location, destination;
     QList<QGraphicsLineItem*> edgeLines;
+    QList<QGraphicsLineItem*> pathLines;
     QList<QGraphicsEllipseItem*> cities;
+    QList<QGraphicsTextItem*> labels;
 
     int source1, source2;
     void showGraph();

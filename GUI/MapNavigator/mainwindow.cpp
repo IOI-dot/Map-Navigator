@@ -1,11 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "graphitem.h"
-#include "dijkstra.h"
-#include <QtMath>
-#include <QGraphicsEllipseItem>
-#include <QMessageBox>
-#include <QKeyEvent>
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -40,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     spellChecker = new SpellChecker(citySet);
     ui->sourcebox->installEventFilter(this);
     ui->sourcebox2->installEventFilter(this);
+
+    ui->pathLabel->setDisabled(true);
 }
 
 MainWindow::~MainWindow()
@@ -52,7 +50,9 @@ void MainWindow::showGraph() {
     scene->clear();
     cityPositions.clear();
     edgeLines.clear();
+    pathLines.clear();
     cities.clear();
+    labels.clear();
     ui->distance->hide();
 
     radiusX = 250;
@@ -79,6 +79,7 @@ void MainWindow::showGraph() {
         name->setZValue(1);
         name->setDefaultTextColor(Qt::white);
         name->setPos((x + nodeSize/2), (y + nodeSize/2));
+        labels.append(name);
 
     }
 
@@ -109,6 +110,18 @@ void MainWindow::on_go_clicked() {
     for (auto city : cities) {
         city->setBrush(QColor(128, 162, 146));
     }
+
+    for (auto line : pathLines) {
+        scene->removeItem(line);
+        delete line;
+    }
+
+    for (auto line : edgeLines) {
+        line->setOpacity(0.2);
+        line->show();
+    }
+
+    pathLines.clear();
 
     QString source = ui->sourcebox->currentText().trimmed();
     QString dest = ui->sourcebox2->currentText().trimmed();
@@ -160,13 +173,6 @@ void MainWindow::on_go_clicked() {
     auto path = result.first;
     double distance = result.second;
 
-    for (auto line : edgeLines) {
-        scene->removeItem(line);
-        delete line;
-    }
-
-    edgeLines.clear();
-
     if (distance == -1 || path.empty()) {
         // No path found
         QMessageBox::warning(this, "No Path Found",
@@ -177,27 +183,53 @@ void MainWindow::on_go_clicked() {
         ui->pathLabel->setVisible(true);
         showGraph();
         return; //no path to draw
+
+
     }
+
+    QVector<int> citiesInPath;
+    for (const auto& cityName : path) {
+        int index = graph.getCityIndex(cityName);
+        if (index != -1)
+            citiesInPath.append(index);
+
+    }
+
+    for (int i = 0; i < cities.size(); i++) {
+        bool inPath = citiesInPath.contains(i);
+
+        // cities[i]->setVisible(inPath);
+        if (inPath) {
+            cities[i]->setBrush(Qt::white);
+            labels[i]->setDefaultTextColor(Qt::white);
+            cities[i]->setOpacity(1.0);
+            labels[i]->setOpacity(1.0);
+        }
+        else {
+            QColor otherColor(128, 162, 146, 80);
+            cities[i]->setBrush(QBrush(otherColor));
+            labels[i]->setDefaultTextColor(QColor(255, 255, 255, 80));
+            cities[i]->setOpacity(0.3);
+            labels[i]->setOpacity(0.3);
+        }
+
+        // labels[i]->setVisible(inPath);
+
+    }
+
+
     for (int i = 0; i < path.size() - 1; i++) {
         int from = graph.getCityIndex(path[i]);
         int to = graph.getCityIndex(path[i + 1]);
 
         if (from != -1 && to != -1) {
             QGraphicsLineItem* line = scene->addLine(QLineF(cityPositions[from], cityPositions[to]), QPen(Qt::green));
-            edgeLines.append(line);
+            line->setZValue(2);
+            line->setOpacity(1.0);
+            pathLines.append(line);
         }
     }
 
-    for (const QString& cityName : path) {
-        int index = graph.getCityIndex(cityName);
-        if (index != -1 && index < cities.size()) {
-            cities[index]->setBrush(Qt::white);
-        }
-    }
-
-    // Show distance
-    ui->distance->setText("Total Distance:\n" + QString::number(distance) + " km.");
-    ui->distance->show();
 
     // Show path
     QString pathStr;
@@ -209,14 +241,20 @@ void MainWindow::on_go_clicked() {
 
     // Set the text
     ui->pathLabel->setText("Path Taken:\n" + pathStr);
+    ui->pathLabel->show();
 
     // Make font bold and bigger
     QFont font = ui->pathLabel->font();
     font.setBold(true);
-    font.setPointSize(12);
+    font.setPointSize(9);
     ui->pathLabel->setFont(font);
-    ui->pathLabel->setStyleSheet("QLabel { color : darkblue; }");
+    // ui->pathpathLabel->setTextColor(Qt::white);
     ui->pathLabel->setVisible(true);
+
+    // Show distance
+    ui->distance->setText("Total Distance:\n" + QString::number(distance) + " km.");
+    ui->distance->setFont(font);
+    ui->distance->show();
 }
 
 void MainWindow::on_sourcebox2_currentIndexChanged(int index) {
@@ -249,7 +287,10 @@ void MainWindow::on_quit_clicked()
 void MainWindow::on_reset_clicked()
 {
     showGraph();
+    ui->distance->hide();
+    ui->pathLabel->hide();
 }
+
 bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
     if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
