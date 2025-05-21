@@ -130,10 +130,19 @@ void MainWindow::on_go_clicked() {
     if (graph.getCityIndex(source) == -1) {
         QString suggestion = spellChecker->findClosestMatch(source);
         if (suggestion != source) {
-            QMessageBox::StandardButton reply;
-            reply = QMessageBox::question(this, "Did you mean...",
-                                          "City \"" + source + "\" not found.\nDid you mean \"" + suggestion + "\"?",
-                                          QMessageBox::Yes | QMessageBox::No);
+            QMessageBox msgBox;
+            msgBox.setWindowTitle("Did you mean...");
+            msgBox.setText("City \"" + source + "\" not found.\nDid you mean \"" + suggestion + "\"?");
+            msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+
+            msgBox.setStyleSheet("QMessageBox { color: white; }");
+
+            QMessageBox::StandardButton reply = static_cast<QMessageBox::StandardButton>(msgBox.exec());
+
+            // QMessageBox::StandardButton reply;
+            // reply = QMessageBox::question(this, "Did you mean...",
+            //                               "City \"" + source + "\" not found.\nDid you mean \"" + suggestion + "\"?",
+            //                               QMessageBox::Yes | QMessageBox::No);
 
             if (reply == QMessageBox::Yes) {
                 source = suggestion;
