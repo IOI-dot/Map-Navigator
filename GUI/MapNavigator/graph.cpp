@@ -27,19 +27,16 @@ void Graph::addEdge(QString fromCity, QString toCity, double weight) {
     int to = getIndexByNameIgnoreCase(toCity);
 
     if (from == -1 || to == -1) {
-        // std::cout << "One or both cities not found.\n";
         return;
     }
 
     if (from == to) {
-        // std::cout << "Cannot add an edge to the same city.\n";
         return;
     }
 
-    // Check if the edge already exists
     for (int i = 0; i < nodes[from].edges.get_size(); ++i) {
         if (nodes[from].edges[i].to == to) {
-            // std::cout << "Edge already exists.\n";
+
             return;
         }
     }
@@ -50,16 +47,13 @@ void Graph::addEdge(QString fromCity, QString toCity, double weight) {
 
     nodes[from].edges.push_back(e1);  // Add edge to the source city
     nodes[to].edges.push_back(e2);    // Add edge to the destination city
-    // std:: cout << "Direct path of " << weight << " kilometers between " << fromCity << " and " << toCity << " added successfully!" << std::endl << std::endl;
 }
 
 
 void Graph::display() const {
     for (int i = 0; i < nodes.get_size(); i++) {
-        // std::cout << std::endl << nodes[i].name << std::endl;
         for (int j = 0; j < nodes[i].edges.get_size(); j++) {
             int to = nodes[i].edges[j].to;
-            // std::cout << "  -> " << nodes[to].name << " (distance: " << nodes[i].edges[j].weight << " km)" << std::endl;
         }
     }
 
@@ -106,7 +100,6 @@ void Graph::deleteEdge(QString city1, QString city2) {
     int v = getIndexByName(city2);
 
     if (u == -1 || v == -1) {
-        // std::cout << "One or both cities not found.\n";
         return;
     }
 
@@ -128,13 +121,11 @@ void Graph::deleteEdge(QString city1, QString city2) {
     }
     nodes[v].edges = newEdgesCity2;
 
-    // std::cout << "Edge between " << city1 << " and " << city2 << " has been removed." << std::endl;
 }
 
 void Graph::deleteCity(QString cityName) {
     int index = getIndexByNameIgnoreCase(cityName);
     if (index == -1) {
-        // std::cout << "City not found: " << cityName << std::endl;
         return;
     }
 
@@ -151,7 +142,6 @@ void Graph::deleteCity(QString cityName) {
 
     nodes.pop_back(); // Remove last element
 
-    // std::cout << "City '" << cityName << "' and all related edges have been deleted." << std::endl;
 }
 bool Graph::edgeExists(QString city1, QString city2) const {
     int cityIndex = getIndexByName(city1);

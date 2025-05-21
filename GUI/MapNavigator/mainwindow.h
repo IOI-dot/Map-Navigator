@@ -21,7 +21,6 @@ protected:
 private slots:
     void on_go_clicked();
 
-    // void on_sourcebox_2_currentIndexChanged(int index);
 
     void on_sourcebox_currentIndexChanged(int index);
 
@@ -29,7 +28,6 @@ private slots:
 
     void on_sourcebox2_currentIndexChanged(int index);
 
-    // void on_destinationbox_currentIndexChanged(int index);
 
     void on_reset_clicked();
 

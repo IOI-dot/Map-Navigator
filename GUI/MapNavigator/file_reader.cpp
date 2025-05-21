@@ -6,7 +6,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-#include <iomanip>  // For formatting if needed
+#include <iomanip>
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
@@ -54,7 +54,6 @@ void FileReader::loadFromFile(const QString& filePath, Graph& graph) {
         }
 
     file.close();
-    // std::cout << "Graph loaded from file: " << filePath << "\n";
 }
 
 void FileReader::saveToFile(const QString &filePath) {
@@ -70,11 +69,11 @@ void FileReader::saveToFile(const QString &filePath) {
     for (int i = 0; i < graph.getSize(); i++) {
         QString fromCity = graph.getCityName(i);
         DynamicArray<Edge> edges = graph.getEdges(i);
-        // qDebug() << "HELLOOOOOOOOO";
+        // qDebug() << "HEREEE";
 
         if (edges.get_size() > 0) {
             for (int i = 0; i < edges.get_size(); i++) {
-                // qDebug() << "ITSMEEEE";
+                // qDebug() << "IM HEEEREEEE";
                 QString tocity = graph.getCityName(edges[i].to);
                 // qDebug() << "HIII";
                 double weight = edges[i].weight;

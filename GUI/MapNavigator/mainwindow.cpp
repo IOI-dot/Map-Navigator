@@ -19,10 +19,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     showGraph();
 
-    // ui->theShortest->setVisible(false);
-    // ui->thePath->setVisible(false);
-    // ui->path->setVisible(false);
-
     ui->sourcebox->addItem("");
     ui->sourcebox->setCurrentIndex(0);
 
@@ -117,7 +113,7 @@ void MainWindow::on_go_clicked() {
     QString source = ui->sourcebox->currentText().trimmed();
     QString dest = ui->sourcebox2->currentText().trimmed();
 
-    // Validate source
+
     if (graph.getCityIndex(source) == -1) {
         QString suggestion = spellChecker->findClosestMatch(source);
         if (suggestion != source) {
@@ -138,7 +134,7 @@ void MainWindow::on_go_clicked() {
         }
     }
 
-    // Validate destination
+
     if (graph.getCityIndex(dest) == -1) {
         QString suggestion = spellChecker->findClosestMatch(dest);
         if (suggestion != dest) {
@@ -245,8 +241,6 @@ void MainWindow::on_sourcebox_currentIndexChanged(int index) {
 
 void MainWindow::on_quit_clicked()
 {
-
-    // FileReader::saveToFile("C:/Users/Omar/CLionProjects/Map-Navigator/city_connections_dataset.txt");
     QApplication::quit();
 
 }

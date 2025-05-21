@@ -1,4 +1,3 @@
-#include "welcomepage.h"
 #include "graph.h"
 #include "graphitem.h"
 #include "file_reader.h"
@@ -10,8 +9,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     FileReader x;
-    x.loadFromFile("C:/Users/Omar/CLionProjects/Map-Navigator/city_connections_dataset.txt", graph);
-    // welcomePage w;
+    x.loadFromFile("../MapNavigator/city_connections_dataset.txt", graph);
+
     MainWindow w;
     w.show();
 
